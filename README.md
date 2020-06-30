@@ -13,7 +13,7 @@ A Google Cloud Storage adapter for [flysystem](https://github.com/thephpleague/f
 ## Installation
 
 ```bash
-composer require superbalist/flysystem-google-storage
+composer require gobrave/flysystem-google-storage
 ```
 
 ## Integrations
@@ -22,12 +22,29 @@ Want to get started quickly? Check out some of these integrations:
 
 * Laravel - https://github.com/Superbalist/laravel-google-cloud-storage
 
+## Config
+Add a new disk to your filesystems.php config
+
+```
+'gcs' => [
+    'driver' => 'gcs',
+    'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'your-project-id'),
+    'key_file' => env('GOOGLE_CLOUD_KEY_FILE', null), // optional: /path/to/service-account.json
+    'bucket' => env('GOOGLE_CLOUD_STORAGE_BUCKET', 'your-bucket'),
+    'path_prefix' => env('GOOGLE_CLOUD_STORAGE_PATH_PREFIX', null), // optional: /default/path/to/apply/in/bucket
+    'storage_api_uri' => env('GOOGLE_CLOUD_STORAGE_API_URI', null), // see: Public URLs below
+    'visibility' => 'public', // optional: public|private
+    'acl' => 'uniform', // uniform|fine-graded
+],
+```
+
 ## Usage
 
 ```php
 use Google\Cloud\Storage\StorageClient;
 use League\Flysystem\Filesystem;
 use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
+
 
 /**
  * The credentials will be auto-loaded by the Google Cloud Client.
