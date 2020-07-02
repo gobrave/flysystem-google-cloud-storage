@@ -1,5 +1,5 @@
 {
-	"name": "superbalist/flysystem-google-storage",
+	"name": "gobrave/flysystem-google-storage",
 	"description": "Flysystem adapter for Google Cloud Storage",
 	"license": "MIT",
 	"authors": [
